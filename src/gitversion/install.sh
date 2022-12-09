@@ -73,17 +73,17 @@ echo "Installing gitversion ..."
 # Install dependencies if missing
 check_packages curl ca-certificates
 
-architecture="$(uname -m)"
-case $architecture in
-    x86_64) architecture="amd64";;
-    aarch64 | armv8* | arm64) architecture="arm64";;
-    *) echo "(!) Architecture $architecture unsupported"; exit 1 ;;
+ARCHITECTURE="$(uname -m)"
+case $ARCHITECTURE in
+    x86_64) ARCHITECTURE="x64";;
+    aarch64 | armv8* | arm64) ARCHITECTURE="arm64";;
+    *) echo "(!) Architecture $ARCHITECTURE unsupported"; exit 1 ;;
 esac
 
 # Soft version matching
 find_version_from_git_tags GITVERSION_VERSION "https://github.com/GitTools/GitVersion" "tags/"
 
-curl -sSL --fail -o /tmp/gitversion.tar.gz "https://github.com/GitTools/GitVersion/releases/download/${GITVERSION_VERSION}/gitversion-linux-x64-${GITVERSION_VERSION}.tar.gz"
+curl -sSL --fail -o /tmp/gitversion.tar.gz "https://github.com/GitTools/GitVersion/releases/download/${GITVERSION_VERSION}/gitversion-linux-${ARCHITECTURE}-${GITVERSION_VERSION}.tar.gz"
 tar xvf /tmp/gitversion.tar.gz "gitversion"
 
 mv "gitversion" /usr/local/bin
