@@ -4,7 +4,17 @@ on:
     branches:
       - main
   pull_request:
+    branches:
+      - main
+    paths:
+      - src/**
+      - test/**
+      - "!**.md"
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
