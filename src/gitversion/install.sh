@@ -70,7 +70,7 @@ find_version_from_git_tags() {
 echo "Installing gitversion ..."
 
 # Install dependencies if missing
-check_packages curl git libicu67 ca-certificates
+check_packages curl git libicu66 ca-certificates
 
 ARCHITECTURE="$(uname -m)"
 case $ARCHITECTURE in
