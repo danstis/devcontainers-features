@@ -1,0 +1,17 @@
+{
+    "name": "GitVersion",
+    "id": "gitversion",
+    "version": "0.1.0",
+    "description": "Adds the GitVersion CLI tool",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "5.11.1"
+            ],
+            "default": "latest",
+            "description": "Version of GitVersion to install, from https://github.com/GitTools/GitVersion/releases"
+        }
+    }
+}
