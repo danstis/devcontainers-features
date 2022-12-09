@@ -34,7 +34,7 @@ check_packages() {
     fi
 }
 
-# Figure out correct version of a three part version number is not passed
+# Figure out correct version if a three part version number is not passed
 find_version_from_git_tags() {
     local variable_name=$1
     local requested_version=${!variable_name}
