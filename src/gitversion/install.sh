@@ -86,6 +86,7 @@ curl -sSL --fail -o /tmp/gitversion.tar.gz "https://github.com/GitTools/GitVersi
 tar xvf /tmp/gitversion.tar.gz "gitversion"
 
 mv "gitversion" /usr/local/bin
+chmod 0755 /usr/local/bin/gitversion
 rm -rf  /tmp/gitversion.tar.gz
 
 gitversion version
