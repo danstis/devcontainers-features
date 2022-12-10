@@ -16,6 +16,7 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 export DEBIAN_FRONTEND=noninteractive
+source /etc/os-release
 
 apt_get_update()
 {
@@ -70,7 +71,13 @@ find_version_from_git_tags() {
 echo "Installing gitversion ..."
 
 # Install dependencies if missing
-check_packages curl git libicu70 ca-certificates
+check_packages curl git ca-certificates
+
+case "${ID}" in
+	debian)	check_packages libicu67;;
+	ubuntu)	check_packages libicu70;;
+	*) check_packages libicu70
+esac
 
 ARCHITECTURE="$(uname -m)"
 case $ARCHITECTURE in
