@@ -73,9 +73,18 @@ echo "Installing gitversion ..."
 # Install dependencies if missing
 check_packages curl git ca-certificates
 
+. /etc/os-release  # Load the os-release file to get OS variables
+
 case "${ID}" in
-	debian)	check_packages libicu67;;
-	ubuntu)	check_packages libicu70;;
+	debian)	
+		case "${VERSION_ID}" in
+			10*)	check_packages libicu63;;  # for Debian 10 (buster)
+			11*)	check_packages libicu67;;  # for Debian 11 (bullseye)
+			12*)	check_packages libicu72;;  # for Debian 12 (bookworm)
+			*) check_packages libicu72       # for newer versions
+		esac
+		;;
+	ubuntu) check_packages libicu70;;
 	*) check_packages libicu70
 esac
 
