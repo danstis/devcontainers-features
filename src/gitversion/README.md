@@ -7,7 +7,7 @@ Adds the GitVersion CLI tool
 
 ```json
 "features": {
-    "ghcr.io/danstis/devcontainers-features/gitversion:0": {}
+    "ghcr.io/danstis/devcontainers-features/gitversion:1": {}
 }
 ```
 
